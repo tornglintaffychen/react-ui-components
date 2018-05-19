@@ -1,0 +1,102 @@
+{
+  "name": "react-ui-components",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tornglintaffychen/react-ui-components.git"
+  },
+  "description": "React UI Components",
+  "main": "dist/index.js",
+  "author": "Torng-Lin (Taffy) Chen",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run storybook",
+    "prebuild": "rimraf dist",
+    "build": "babel src/ --out-dir dist --ignore spec.js,story.js",
+    "test": "jest src --coverage",
+    "snapshots": "jest src -u --coverage",
+    "watch": "npm t -- --watch",
+    "storybook": "start-storybook -p 3000 -c .storybook",
+    "export-storybook": "build-storybook -c .storybook -o storybook-static",
+    "lint": "./node_modules/.bin/eslint ./src"
+  },
+  "pre-commit": {
+    "silent": false,
+    "run": [
+      "lint",
+      "test"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.5.7-alpha.1",
+    "react": "^16.3.2",
+    "styled-components": "^3.1.0-3"
+  },
+  "devDependencies": {
+    "@storybook/addon-knobs": "^3.3.10",
+    "@storybook/addon-options": "^3.3.10",
+    "@storybook/react": "^3.3.10",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.28.9",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "file-loader": "^0.11.1",
+    "glob-loader": "^0.3.0",
+    "jest": "^21.2.1",
+    "pre-commit": "^1.2.2",
+    "react-dom": "^16.3.2",
+    "react-test-renderer": "^16.3.2",
+    "rimraf": "^2.6.2",
+    "scss-loader": "0.0.1",
+    "storybook-addon-jsx": "^4.2.0",
+    "storybook-addon-smart-knobs": "^3.3.1",
+    "storybook-readme": "^3.2.0",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "jest": {
+    "resetModules": true,
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "./shim.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "./shim.js",
+      "./enzyme-setup.js",
+      "./test-setup.js"
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.prod.pcln.com/repository/npm-pcln/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "presets": ["env", "react"],
+  "plugins": [
+    "transform-es2015-modules-commonjs",
+    "transform-class-properties"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs",
+        "transform-class-properties",
+        [
+          "module-resolver",
+          {
+            "root": [
+              "."
+            ],
+          "alias": {
+              "atoms": "src/components/atoms",
+              "molecules": "src/components/molecules",
+              "organisms": "src/components/organisms",
+              "helpers": "src/helpers"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
